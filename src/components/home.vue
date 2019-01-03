@@ -10,7 +10,7 @@
             <h2>电商后台管理系统</h2>
           </el-col>
           <el-col :span="1" class="out">
-            <a href="#">退出</a>
+            <a href="#" @click.prevent="lyout()">退出</a>
           </el-col>
         </el-row>
       </el-header>
@@ -102,7 +102,30 @@
 </template>
 
 <script>
-export default {}
+export default {
+  beforeCreate(){
+    //验证是否存储token
+    if(!localStorage.getItem('token')){
+      this.$message.warning('请先登录')
+      this.$router.push({
+        path:"/login"
+      })
+
+    }
+
+  },
+  methods:{
+    //退出登录
+    lyout(){
+      localStorage.clear()
+      this.$router.push({
+        path:"/login"
+      })
+      this.$message.success("退出成功")
+    }
+  }
+
+}
 </script>
 
 <style>

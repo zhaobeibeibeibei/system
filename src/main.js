@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
+import moment from 'moment'
 import 'element-ui/lib/theme-chalk/index.css'
 // 引入axios
 import axios from '@/plugins/http'
@@ -14,7 +15,10 @@ Vue.use(axios)
 Vue.use(ElementUI)
 // 在生产阶段关闭日志输出
 Vue.config.productionTip = false
-
+// 配置全局处理日期格式
+Vue.filter('setdate', function (v) {
+  return moment(v).format('YYYY-MM-DD')
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

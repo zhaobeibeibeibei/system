@@ -28,17 +28,16 @@ export default {
   },
   methods: {
     async check () {
-    const res=await this.$http.post('login', this.formdata)
-    const {data:{data,meta:{msg,status}}}=res
-    if(status===200){
-      localStorage.setItem("token",data.token)
-      this.$router.push({
-      path:'/'
+      const res = await this.$http.post('login', this.formdata)
+      const {data: {data, meta: {msg, status}}} = res
+      if (status === 200) {
+        localStorage.setItem('token', data.token)
+        this.$router.push({
+          path: '/'
         })
-        }else{
-          this.$message.warning(msg);
-        }
-
+      } else {
+        this.$message.warning(msg)
+      }
     }
 
   }

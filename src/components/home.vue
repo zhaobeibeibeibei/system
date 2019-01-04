@@ -17,6 +17,7 @@
       <el-container>
         <el-aside width="200px" >
           <el-menu
+          router
             unique-opened
             default-active="1"
             class="el-menu-vertical-demo middle"
@@ -27,7 +28,7 @@
                 <span>用户管理</span>
               </template>
               <el-menu-item-group>
-                <el-menu-item index="1-1">
+                <el-menu-item index="user">
                   <i class="el-icon-menu"></i>
                   用户列表
                 </el-menu-item>
@@ -95,7 +96,9 @@
             </el-submenu>
           </el-menu>
         </el-aside>
-        <el-main>Main</el-main>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -103,25 +106,23 @@
 
 <script>
 export default {
-  beforeCreate(){
-    //验证是否存储token
-    if(!localStorage.getItem('token')){
+  beforeCreate () {
+    // 验证是否存储token
+    if (!localStorage.getItem('token')) {
       this.$message.warning('请先登录')
       this.$router.push({
-        path:"/login"
+        path: '/login'
       })
-
     }
-
   },
-  methods:{
-    //退出登录
-    lyout(){
+  methods: {
+    // 退出登录
+    lyout () {
       localStorage.clear()
       this.$router.push({
-        path:"/login"
+        path: '/login'
       })
-      this.$message.success("退出成功")
+      this.$message.success('退出成功')
     }
   }
 

@@ -6,6 +6,8 @@ import router from './router'
 import ElementUI from 'element-ui'
 import moment from 'moment'
 import 'element-ui/lib/theme-chalk/index.css'
+// 导入面包屑组件
+import brand from '@/components/brand.vue'
 // 引入axios
 import axios from '@/plugins/http'
 // 引入公共样式
@@ -19,6 +21,9 @@ Vue.config.productionTip = false
 Vue.filter('setdate', function (v) {
   return moment(v).format('YYYY-MM-DD')
 })
+
+// 声明一个全局组件
+Vue.component(brand.name, brand)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

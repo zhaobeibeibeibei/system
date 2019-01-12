@@ -7,6 +7,9 @@ import rights from '@/components/rights.vue'
 import part from '@/components/part.vue'
 import goods from '@/components/goods.vue'
 import goodsadd from '@/components/goodsadd.vue'
+import params from '@/components/params.vue'
+import categories from '@/components/categories.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -32,6 +35,12 @@ export default new Router({
     {
       path: '/goodsadd',
       component: goodsadd
+    }, {
+      path: '/params',
+      component: params
+    }, {
+      path: '/categories',
+      component: categories
     }]
 
   },

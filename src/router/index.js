@@ -9,6 +9,7 @@ import goods from '@/components/goods.vue'
 import goodsadd from '@/components/goodsadd.vue'
 import params from '@/components/params.vue'
 import categories from '@/components/categories.vue'
+import orders from '@/components/orders.vue'
 
 Vue.use(Router)
 
@@ -41,6 +42,9 @@ export default new Router({
     }, {
       path: '/categories',
       component: categories
+    }, {
+      path:'/orders',
+      component: orders
     }]
 
   },

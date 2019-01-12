@@ -17,7 +17,8 @@
       </el-col>
     </el-row>
     <!-- 表格 -->
-    <el-table height="300px" :data="tableData" stripe style="width: 100%">
+    <el-table height="300px" :data="tableData" stripe style="width: 100%"  v-loading="loading">
+
       <el-table-column prop="id" label="#" width="80"></el-table-column>
       <el-table-column prop="username" label="姓名" width="120"></el-table-column>
       <el-table-column prop="email" label="邮箱" width="150"></el-table-column>
@@ -139,6 +140,7 @@
 export default {
   data () {
     return {
+      loading:false,
       tableData: [],
       query: '',
       pagenum: 1,
@@ -167,9 +169,7 @@ export default {
   methods: {
     // 获取所有用户
     async gtedata () {
-      // 配置请求头
-      const AUTH_TOKEN = localStorage.getItem('token')
-      this.$http.defaults.headers.common['Authorization'] = AUTH_TOKEN
+      this.loading=true
       const res = await this.$http.get(
         `users?query=${this.query}&pagenum=${this.pagenum}&pagesize=${
           this.pagesize
@@ -183,6 +183,7 @@ export default {
         }
       } = res
       if (status === 200) {
+        this.loading=false
         this.tableData = users
         this.total = total
         this.$message.success(msg)
